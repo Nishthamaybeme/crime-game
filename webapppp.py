@@ -89,7 +89,7 @@ def main():
     if st.button('Run'):
         execute_sql_query(conn, query2)
     
-    query3 = st.text_area("Query 3: This query further refines the search by filtering crimes based on both the exact location and the type of crime. The AND operator is used in the WHERE clause to combine multiple conditions that must all be true for a record to be included in the result. This allows you to narrow down the dataset to only those crimes that match both specified criteria.",
+    query3 = st.text_area("Query 3: This query further refines the search by filtering crimes based on both the exact location and the type of crime. The AND operator is used in the 'WHERE' clause to combine multiple conditions that must all be true for a record to be included in the result. This allows you to narrow down the dataset to only those crimes that match both specified criteria.",
                           """SELECT  *
                              FROM crimes c
                              WHERE c.EXACT_LOCATION = 'INSERT_LOCATION'
@@ -98,11 +98,11 @@ def main():
         execute_sql_query(conn, query3)
 
     # Additional Queries
-    query4 = st.text_area("This query combines data from the crimes and criminals tables using an INNER JOIN on the INCIDENT_AREA column. The SELECT DISTINCT statement ensures that only unique records are returned. The query filters results to display information about a kidnapping that occurred in a parking lot on a specific date. This helps you identify relevant details about the crime and the criminal involved.",
+    query4 = st.text_area("This query combines data from the crimes and criminals tables using an INNER JOIN on the INCIDENT_AREA column. The SELECT DISTINCT statement ensures that only unique records are returned. This helps you identify relevant details about the crime and the criminal involved.",
                           """SELECT DISTINCT c.INCIDENT_AREA, cr.CRIMINAL_ID, cr.INCIDENT_DATE, C.WEAPON
                              FROM crimes c
                              JOIN criminals cr ON c.INCIDENT_AREA = cr.INCIDENT_AREA
-                             WHERE c.EXACT_LOCATION = 'PARKING LOT' AND c.CRIME='KIDNAPPING' AND cr.INCIDENT_DATE='12/08/2023 12:00:00 AM';""")
+                             WHERE c.EXACT_LOCATION = 'INSERT_LOCATION' AND c.CRIME='SPECIFY_CRIME' AND cr.INCIDENT_DATE='DD/MM/YYYY 00:00:00 AM';""")
     if st.button('Execute Query 4'):
         execute_sql_query(conn, query4)
         # User input block
@@ -136,7 +136,7 @@ Explore deeper insights by integrating data from multiple sources. Joining table
                              FROM crimes c
                              JOIN criminals cr ON c.INCIDENT_AREA = cr.INCIDENT_AREA
                              JOIN victim v ON c.INCIDENT_AREA = v.INCIDENT_AREA
-                             WHERE c.EXACT_LOCATION = 'PARKING LOT' AND c.CRIME='KIDNAPPING' AND c.INCIDENT_AREA='Southwest' AND cr.INCIDENT_DATE='12/08/2023 12:00:00 AM'; """)
+                             WHERE c.EXACT_LOCATION = 'INSERT_LOCATION' AND c.CRIME='SPECIFY_CRIME' AND c.INCIDENT_AREA='Area_name' AND cr.INCIDENT_DATE='DD/MM/YYYY 00:00:00 AM'; """)
     if st.button('Execute Query 5'):
         execute_sql_query(conn, query5)
 
@@ -147,7 +147,7 @@ Explore deeper insights by integrating data from multiple sources. Joining table
                              FROM crimes c
                              JOIN criminals cr ON c.INCIDENT_AREA = cr.INCIDENT_AREA
                              JOIN victim v ON c.INCIDENT_AREA = v.INCIDENT_AREA
-                             WHERE c.EXACT_LOCATION = 'PARKING LOT' AND c.CRIME='KIDNAPPING' AND c.INCIDENT_AREA='Southwest' AND cr.INCIDENT_DATE='12/08/2023 12:00:00 AM' and v.VICTIM_AGE='18' AND V.VICTIM_GENDER='F'; """)
+                             WHERE c.EXACT_LOCATION = 'INSERT_LOCATION' AND c.CRIME='SPECIFY_CRIME' AND c.INCIDENT_AREA='Area_name' AND cr.INCIDENT_DATE='DD/MM/YYYY 00:00:00 AM' and v.VICTIM_AGE='XX' AND V.VICTIM_GENDER='F or M'; """)
     if st.button('Execute Query 6'):
         execute_sql_query(conn, query6)
     
