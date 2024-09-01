@@ -15,7 +15,7 @@ def create_db_from_df(df, table_name, conn):
 
 # Function to display the title and introduction
 def display_intro():
-    st.title("Mystery: The Case of the Sorted Crimes")
+    st.title("Crime Solving Game")
     st.image("Murder_Scene_v3-copy_800.png", use_column_width=True)
     st.header("Welcome to our mystery adventure! Explore the sorted crime data and unravel the clues.")
     st.write("""
